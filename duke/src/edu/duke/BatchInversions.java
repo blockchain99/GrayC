@@ -25,15 +25,20 @@ public class BatchInversions {
     	return invertedImage;
     }	
     /*
-    public void addAndInvert(){
+    public void selectAndConvert(){
     	
-    	DirectoryResource dr = new DirectoryResource();
-    	for(File f : dr.selectedFiles()){
-    		FileResource fr = new FileResource();
-        	ImageResource ir = new ImageResource();
-        	BatchInversions bi = new BatchInversions();
-        	              = bi.makeInversion(inImage)
-        	
+    	DirectoryResource drs = new DirectoryResource();
+    	for(File file : drs.selectedFiles()){
+    		
+        	ImageResource inr = new ImageResource(file);
+        	BatchInversions batchinv = new BatchInversions();
+        	ImageResource invertedR = batchinV.makeInversion(inr);
+        	invertedR.draw();
+        	String resultNames = "inverted-" + inr.getFileName();
+        	invertedR.setFileName(resultNames);
+        	invertedR.save();
+        	System.out.println(resultNames);
+       	
     	}
     } */
 }
