@@ -49,7 +49,7 @@ public class TagFinder {
 		   String ap = "";
 		   String result = findProtein(a);
 		   if (ap.equals(result)){
-			   System.out.println("success for " + ap);
+			   System.out.println("success for " + ap + "length " + ap.length());
 		   }
 		   else {
 			   System.out.println("mistake for input : "+a);
