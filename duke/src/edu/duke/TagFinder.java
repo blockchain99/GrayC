@@ -42,11 +42,11 @@ public class TagFinder {
 			}
 	   }
 	   public void testing() {
-		   String a = "cccatggggtttaaataataatgagagagagagagagagagttt";
-		   String a1= "01234567890123456789012345678901234567890123";       
-		   String ap = "atggggtttaaataataatga";
-//		   String a = "atgcctag";
-//		   String ap = "";
+//		   String a = "cccatggggtttaaataataatgagagagagagagagagagttt";
+//		   String a1= "01234567890123456789012345678901234567890123";       
+//		   String ap = "atggggtttaaataataatga";
+		   String a = "atgcctag";
+		   String ap = "";
 		   String result = findProtein(a);
 		   if (ap.equals(result)){
 			   System.out.println("success for " + ap);
