@@ -33,7 +33,7 @@ public class TagFinder {
 			return "";  // no start codon found
 		}
 		// start of "tga" string after start+3  
-		int stop = dna.indexOf("tga", start+3);
+		int stop = dna.indexOf("tag", start+3);
 		if((stop - start) %3 == 0){
 			return dna.substring(start, stop+3);
 		}
@@ -42,11 +42,13 @@ public class TagFinder {
 			}
 	   }
 	   public void testing() {
-//		   String a = "cccatggggtttaaataataatgagagagagagagagagagttt";
+//		   String a = "cccatggggtttaaataataataggagagagagagagagagttt";
 //		   String a1= "01234567890123456789012345678901234567890123";       
-//		   String ap = "atggggtttaaataataatga";
-		   String a = "atgcctag";
-		   String ap = "";
+//		   String ap = "atggggtttaaataataatag";
+//		   String a = "atgcctag";
+//		   String ap = "";
+		   String a = "ATGCCCTAG";
+		   String ap = "ATGCCCTAG";
 		   String result = findProtein(a);
 		   if (ap.equals(result)){
 			   System.out.println("success for " + ap + "length " + ap.length());
