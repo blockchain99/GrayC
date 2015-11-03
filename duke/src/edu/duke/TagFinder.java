@@ -1,5 +1,8 @@
 package edu.duke;
 
+import java.io.File;
+import java.util.Scanner;
+
 public class TagFinder {
 	public String findProtein(String dna){
 		/*
@@ -38,17 +41,17 @@ public class TagFinder {
 			return dna.substring(start, stop+3);
 		}
 		else {
-			return "";
+			return "return nothing" + "";
 			}
 	   }
 	   public void testing() {
-		   String a = "cccatggggtttaaataataataggagagagagagagagagttt";
-		   String a1= "01234567890123456789012345678901234567890123";       
-		   String ap = "atggggtttaaataataatag";
+//		   String a = "cccatggggtttaaataataataggagagagagagagagagttt";
+//		   String a1= "01234567890123456789012345678901234567890123";       
+//		   String ap = "atggggtttaaataataatag";
 //		   String a = "atgcctag";
 //		   String ap = "";
-//		   String a = "ATGCCCTAG";
-//		   String ap = "ATGCCCTAG";
+		   String a = "ATGCCCTAG";
+		   String ap = "ATGCCCTAG";
 		   String result = findProtein(a);
 		   if (ap.equals(result)){
 			   System.out.println("success for " + ap + " length:" + ap.length());
@@ -60,5 +63,23 @@ public class TagFinder {
 			   
 		   }
 	   }
-
+       public void realTesting(){
+    	   //FileResource words() lines() asString()
+    	   //DirectoryResource selectedFiles()
+    	   DirectoryResource dr = new DirectoryResource();
+    	   for(File f : dr.selectedFiles()){
+    		   FileResource fr = new FileResource(f);
+    		   String s = fr.asString();
+    		   System.out.println("read" + s.length() + "characters");
+    		   System.out.println("Genetic codon findout result is : " + findProtein(s));
+    		   
+    	   }
+       }
+       public void inputTesting(){
+    	   Scanner input = new Scanner(System.in);
+    	   System.out.println("Input dna string : ");
+    	   String inputDna = input.nextLine();
+    	   System.out.println("Genetic codon findout result is : " + findProtein(inputDna));
+    	   
+       }
 }

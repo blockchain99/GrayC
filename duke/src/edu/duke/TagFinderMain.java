@@ -6,5 +6,7 @@ public class TagFinderMain {
 TagFinder tf = new TagFinder();
 System.out.println(tf.findProtein(dnaEx));
 tf.testing();
+tf.realTesting();
+//tf.inputTesting();
 	}
 }
