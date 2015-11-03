@@ -77,7 +77,7 @@ public class AssFAGen {
 					int returnFindStopIndex2 = findStopIndex2(dna, startFindAll);
 				    System.out.println("returnFindStopIndex : " + returnFindStopIndex2);
 				    {
-				    if(returnFindStopIndex2 != 12){
+				    if(returnFindStopIndex2 != dna.length()){
 				    String resultString = dna.substring(loc,(returnFindStopIndex2+3));
 				    System.out.println("findStopINdex2() result : " + resultString); 
 				    }
