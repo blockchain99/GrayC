@@ -72,6 +72,10 @@ public class AssFAGen {
 				    int loc = dna.indexOf("ATG", startFindAll);
 				  
 				    System.out.println("ATG start at : "+ loc);
+			    	
+					if(loc == -1){
+					break;
+				    }   
 				    startFindAll = loc +3;
 				    System.out.println("startFindAll before : "+startFindAll);
 					int returnFindStopIndex2 = findStopIndex2(dna, startFindAll);
@@ -85,10 +89,7 @@ public class AssFAGen {
 				    	System.out.println("no gene found ");
 				    }
 				    }
-				    	
-			if(loc == -1){
-			break;
-		    }   
+				
 			    System.out.println("loc " +loc);
 			  //  startFindAll = loc +3;
 			    System.out.println("startFindAll after : "+startFindAll);

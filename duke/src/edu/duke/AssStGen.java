@@ -59,6 +59,7 @@ StorageResource stSource = new StorageResource("c:\\srcj\\brca1line.fa");
  *  repeatedly look for a gene, and if it finds one, store it 
  *  and then look for another gene. This method should call findStopIndex2.
  **/
+	
 //create and return a StorageResource containing the genes found.
 	public StorageResource storeAll(){	
 		  int startFindAll = 0;
@@ -70,7 +71,7 @@ StorageResource stSource = new StorageResource("c:\\srcj\\brca1line.fa");
 				    System.out.println("ATG start at : "+ loc);
 				    if(loc == -1){
 						break;
-		    }  
+		            }  
 				    startFindAll = loc +3;
 				    System.out.println("startFindAll before : "+startFindAll);
 					int returnFindStopIndex2 = findStopIndex3(source, startFindAll);
@@ -124,10 +125,37 @@ StorageResource stSource = new StorageResource("c:\\srcj\\brca1line.fa");
 				}
 			}
 		}
-		
-		
 	}
-
+	/**
+	 * one String parameter dna, and returns the ratio of C’s and G’s 
+	 * in dna as a fraction of the entire strand of DNA.
+	 * 
+	 **/
+    public double cgRatio(String dna){
+    	int firstC = 0;
+    	int firstG = 0;
+    	int countC = 0;
+    	int countG = 0;
+    	int sizeOfInput = dna.length();
+    	while(true){
+    	int locationC = dna.indexOf("c", firstC);
+    	countC ++;
+    	if(locationC == -1){
+    		break;
+    	}
+    	firstC = locationC + 1;
+    	}
+    	while(true){
+        	int locationG = dna.indexOf("g", firstG);
+        	countG ++;
+        	if(locationG == -1){
+        		break;
+        	}
+        	firstG = locationG + 1;
+        }
+    	
+    	return (float)(countC+countG)/sizeOfInput;
+    }
 	// reads in the file brca1line.fa, which is a large string of DNA 
 	//and calls storeAll to find and store all the genes in this large strand of DNA. 
 	//It then prints the number of genes found. 
@@ -136,9 +164,17 @@ StorageResource stSource = new StorageResource("c:\\srcj\\brca1line.fa");
 		StorageResource stores = asstg.storeAll();
 		asstg.useBufferedFileWriter(stores.data(), "c:\\srcj\\out.txt");
 	    
-		System.out.println("The found gen is as follows *******************");
+		System.out.println("The found gen(> 60, cgRatio>0.35 *******************");
 		for(String str : stores.data()){
-			System.out.println(str);
+			if(str.length() > 60){
+				System.out.println(str);
+				System.out.println("length >60: " + str.length());
+			}
+			if(cgRatio(str)>0.35){
+				System.out.println(str);
+				System.out.println("length of cgRatio>0.35: " + str.length());
+			}
+			
 		}
 		
 		System.out.println("Stored size : " + stores.size());
