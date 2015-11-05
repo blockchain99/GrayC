@@ -2,7 +2,7 @@ package duke2;
 import org.apache.commons.csv.*;
 
 import edu.duke.*;
-public class FirstCSVExample {
+public class FirstCSVExampleMain {
 
 	public static void main(String[] args) {
 //		FileResource fr = new FileResource();
