@@ -6,7 +6,8 @@ public class FindHighTempMain {
 		FindHighTemp fht = new FindHighTemp();
 		//fht.whatfindHigh();
 		//fht.testHottesInDay();
-		fht.testHottesInManyDays();
+		//fht.testHottesInManyDays();
+		fht.testHottesHourInFile();
 	}
 
 }

@@ -91,6 +91,33 @@ public class FindHighTemp {
 			// return doubleLargest;   // 3)
 			 return largestSoFar;
 		}
+	
+	public CSVRecord hottesHourInFile(CSVParser parser){
+		//start with largestSoFar as nothing
+		CSVRecord largestSoFar1 = null;
+		//for each row(recordC) in the  CSV File
+		for(CSVRecord recordC : parser){
+			largestSoFar1 = getLargestOfTwo(recordC, largestSoFar1);	
+		}
+		//The largestSoFar is the answer
+		return largestSoFar1;
+	}
+	
+	public CSVRecord getLargestOfTwo (CSVRecord currentRow, CSVRecord largestSoFar){
+		//If largestSoFar is  nothing
+		if(largestSoFar == null){
+			largestSoFar = currentRow;
+		}
+		else {
+			double currentD = Double.parseDouble(currentRow.get("TemperatureF"));
+			double largestD     = Double.parseDouble(largestSoFar.get("TemperatureF"));
+			if(currentD > largestD){
+				largestSoFar = currentRow;
+			}
+		}
+		return largestSoFar;
+	}
+	
 	public void whatfindHigh(){
 		FileResource fr = new FileResource();
 		//make CSV parsed object from file transformed to CSV(by getCSVParser())
@@ -111,6 +138,13 @@ public class FindHighTemp {
 	}
 	public void testHottesInManyDays(){
 		CSVRecord largest = hottestInManyDays();  
+		System.out.println("hottest temperature was " + largest.get("TemperatureF") +
+				" at " + largest.get("DateUTC"));
+	}
+	public void testHottesHourInFile(){
+		FileResource fr4 = new FileResource();
+		CSVParser parser4 = fr4.getCSVParser();
+		CSVRecord largest = hottesHourInFile(parser4);   
 		System.out.println("hottest temperature was " + largest.get("TemperatureF") +
 				" at " + largest.get("DateUTC"));
 	}
