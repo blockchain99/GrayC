@@ -1,5 +1,8 @@
 package duke2;
+import java.io.File;
+
 import org.apache.commons.csv.*;
+
 import edu.duke.*;
 public class FindHighTemp {
 	/*
@@ -50,6 +53,44 @@ public class FindHighTemp {
 		// return doubleLargest;   // 3)
 		  return largestSoFar;
 	}
+	
+	public CSVRecord hottestInManyDays(){
+		CSVRecord largestSoFar = null;
+		Double doubleLargest= 0.0;
+		Double doubleTemp= 0.0;;
+		String strTemp= null;
+		String strLargest= null;
+		// DirectoryResource class provides the blueprint for object "dr",which is created from a class "DirectoryResource"
+		DirectoryResource dr = new DirectoryResource();
+		//iterate over files
+		// for each files which are selected from directory
+		for(File f : dr.selectedFiles()){
+			//creat fileResource class's object from file "f"
+			FileResource fr = new FileResource(f);
+			// use method to get larest in file.
+//			CSVParser parser = fr.getCSVParser();
+//			CSVRecord largest = findHigh(parser);
+			CSVRecord recordCSV = findHigh(fr.getCSVParser());  // just 1 line for above 2 lines
+			if(largestSoFar == null){
+				largestSoFar = recordCSV;
+			}
+			else {
+				strTemp = recordCSV.get("TemperatureF");
+				doubleTemp = Double.parseDouble(strTemp);
+				strLargest =  largestSoFar.get("TemperatureF");
+				doubleLargest = Double.parseDouble(strLargest);
+				//Check if cucrrentRow's temperature > lagestSoFar's
+				if(doubleTemp >doubleLargest){
+					/*If so update larestSoFar to currentRow  */
+					// doubleLargest = doubleTemp;  //3)
+					largestSoFar = recordCSV;
+					}
+				}
+		   }
+			//System.out.println("Highest temperature is "+ doubleLargest);  //2)
+			// return doubleLargest;   // 3)
+			 return largestSoFar;
+		}
 	public void whatfindHigh(){
 		FileResource fr = new FileResource();
 		//make CSV parsed object from file transformed to CSV(by getCSVParser())
@@ -68,5 +109,9 @@ public class FindHighTemp {
 		System.out.println("hottest temperature was " + largest.get("TemperatureF") +
 				" at " + largest.get("TimeEST"));
 	}
-	
+	public void testHottesInManyDays(){
+		CSVRecord largest = hottestInManyDays();  
+		System.out.println("hottest temperature was " + largest.get("TemperatureF") +
+				" at " + largest.get("DateUTC"));
+	}
 }

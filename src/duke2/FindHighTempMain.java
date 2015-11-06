@@ -5,7 +5,8 @@ public class FindHighTempMain {
 	public static void main(String[] args) {
 		FindHighTemp fht = new FindHighTemp();
 		//fht.whatfindHigh();
-		fht.testHottesInDay();
+		//fht.testHottesInDay();
+		fht.testHottesInManyDays();
 	}
 
 }
