@@ -76,14 +76,30 @@ public class FirstCSVExamle {
 		System.out.println("Countries export both "+ exportItem1 +" and "+ exportItme2+" are as follows");
 		for(CSVRecord record : parser){
 			String lookCol = record.get("Exports");
-			if(lookCol.contains(exportItem1)&& (lookCol.contains(exportItme2))){
-				System.out.println(record.get("Country"));
-				
+			//if(lookCol.contains(exportItem1)&& (lookCol.contains(exportItme2)))
+				if(lookCol.contains(exportItem1)){
+				System.out.println(record.get("Country"));		
 			}
 							
 		}
 		
 	}
+	// name of country export one item.
+	/*
+		public void listExportersTwoProducts(CSVParser parser, String exportItem1){
+			//	System.out.println("Countries export both "+ exportItem1 +" and "+ exportItme2+" are as follows");
+					System.out.println("Countries export both "+ exportItem1 + " are as follows");
+				for(CSVRecord record : parser){
+					String lookCol = record.get("Exports");
+					//if(lookCol.contains(exportItem1)&& (lookCol.contains(exportItme2)))
+						if(lookCol.contains(exportItem1)){
+						System.out.println(record.get("Country"));
+						
+					}
+									
+				}
+			}
+	*/
 	//returns the number of countries that export exportItem.
 	public void numberOfExporters(CSVParser parser, String exportItem){
 		System.out.println("Number of Countries export " + exportItem);
@@ -118,21 +134,26 @@ public class FirstCSVExamle {
 	public void whatCountryInfo(){
 		FileResource fr4 = new FileResource();
 		CSVParser parser4 = fr4.getCSVParser();
-		countryInfo(parser4, "Germany");
+		countryInfo(parser4, "Nauru");
 	}
 	public void whatTwoItemCountry(){
 		FileResource fr5 = new FileResource();
 		CSVParser parser5 = fr5.getCSVParser();
 		listExportersTwoProducts(parser5, "gold", "diamonds");		
 	}
+//	public void whatTwoItemCountry(){
+//		FileResource fr5 = new FileResource();
+//		CSVParser parser5 = fr5.getCSVParser();
+//		listExportersTwoProducts(parser5, "sugar");		
+//	}
 	public void numberOfCountryItem(){
 		FileResource fr6 = new FileResource();
 		CSVParser parser6 = fr6.getCSVParser();
-		numberOfExporters(parser6, "gold");		
+		numberOfExporters(parser6, "sugar");		
 	}
 	public void whatBigExporters(){
 		FileResource fr7 = new FileResource();
 		CSVParser parser7 = fr7.getCSVParser();
-		bigExporters(parser7, "$999,999,999");		
+		bigExporters(parser7, "$999,999,999,999");		
 	}
  }

@@ -21,6 +21,17 @@ public class FindHighTemp {
 	//  TODO..incorrect output
 	//public void hindHigh(CSVParser parser)   // 2)
 	//public double findHigh(CSVParser parser)  // 3)
+	/** set largestSoFar to null, (at first since largestSoFar is null it is assigned to first record.)
+	 * for each record in parser object, If largestSoFar whose type is CSVRecord is null
+	 * it is assigned to current record("record"), (from second record largestSoFar is not null,
+	 * check whether "TemperatureF" column between largesSoFar and current record("record") ) 
+	 * If not null check whether double value of 
+	 * current record("record")'s "TemperatureF" column is bigger than largestSoFar's 
+	 * double value, if so CSVRecord largestSoFar is changed to (current record) CSVRecord record
+	 * and then return largestSoFar.
+	 * @param CSVParser parser
+	 * @return CSVRecord largestSoFar
+	 */
 	public CSVRecord findHigh(CSVParser parser){	
 		//start with largesSoFar as nothing
 		CSVRecord largestSoFar = null;
@@ -53,7 +64,15 @@ public class FindHighTemp {
 		// return doubleLargest;   // 3)
 		  return largestSoFar;
 	}
-	
+	/**
+	 * for each file selected from directory, make FileResource("fr") from selected file("f"),
+	 * In a specific FileResource out of specific File, find & compare record who has the largest "TemperatureF" value 
+	 * by calling method findHigh(parser) whose return value is type CSVRecord(who has the highest "TemperatureF"
+	 * column value among records.). To compare the largestSoFar of the selected Files, set largestSoFor = null;,
+	 * if largestSoFar = null, then set to current File's record with largest "TemperatureF" value.
+	 * 
+	 * @return largestSoFar
+	 */
 	public CSVRecord hottestInManyDays(){
 		CSVRecord largestSoFar = null;
 		Double doubleLargest= 0.0;
@@ -70,6 +89,7 @@ public class FindHighTemp {
 			// use method to get larest in file.
 //			CSVParser parser = fr.getCSVParser();
 //			CSVRecord largest = findHigh(parser);
+			/*Compare between Specific files in terms of highest temperature record   */
 			CSVRecord recordCSV = findHigh(fr.getCSVParser());  // just 1 line for above 2 lines
 			if(largestSoFar == null){
 				largestSoFar = recordCSV;
